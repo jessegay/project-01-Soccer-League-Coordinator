@@ -4,13 +4,13 @@ for stats in playerOne {
     print("\(stats)")
 }
 
-// remember, returned dict values are ALWAYS OPTIONALS.
+ //remember, returned dict values are ALWAYS OPTIONALS.
 
-//if let airportName = playerOne["Height"] {
-//    print("Player one's height is \(airportName).")
-//} else {
-//    print("That player's height is not in the playerOne dictionary.")
-//}
+if let airportName = playerOne["Height"] {
+    print("Player one's height is \(airportName).")
+} else {
+    print("That player's height is not in the playerOne dictionary.")
+}
 
 //if let height = playerOne["Height"] {
 //    let halfHeight = height as! Int/2
@@ -39,6 +39,8 @@ for mmm in playerOne.keys {
 
 
 
+
+// SORTING
 var numbers = [4,6,3,7,8,3,42,57]
 print("First the numbers were unsorted \(numbers)")
 numbers.sort()
