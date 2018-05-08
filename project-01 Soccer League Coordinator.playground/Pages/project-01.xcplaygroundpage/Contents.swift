@@ -65,6 +65,41 @@ for player in theLeague {
     }
 }
 
+experiencedPlayers.count/3
+//  Afterwards   we   can   go   through   (iterate)   each   group   alternately   and   assign   players   to   the tree   teams
+
+// find total (array.count). create counter. / total by 3. If dragonCount < total/3, assign player to teamDragons. If sharkCount < total * 2/3, assign to teamSharks, if raptorCount < total *2/3 && total, assign to teamRaptors. (might have to do this in reverse order). Wait, maybe easier to do with array indicies.
+
+var totalNumberOfPlayers = experiencedPlayers.count
+let firstGroup = experiencedPlayers[0..<totalNumberOfPlayers/3]
+print("\(firstGroup)")
+teamDragons += firstGroup
+
+let secondGroup = experiencedPlayers[totalNumberOfPlayers/3...totalNumberOfPlayers*2/3]
+teamSharks += secondGroup
+
+let thirdGroup = experiencedPlayers[totalNumberOfPlayers*2/3...(totalNumberOfPlayers-1)]
+teamRaptors += thirdGroup
+
+//
+//for player in experiencedPlayers {
+//    var totalNumberOfPlayers = experiencedPlayers.count
+//    if experiencedPlayers[0] {
+//        teamSharks += [player]
+//    } else {
+//        print("blah")
+//    }
+//
+//}
+
+//var count = 0
+//var dragonCount = 0
+//var sharkCount = 0
+//var raptorCount = 0
+//if dragonCount
+
+// EXPERIMENTS:
+
 //for player in theLeague {
 //    if let experience = player["experience"] {
 //    let experienceCheck = experience
@@ -79,7 +114,7 @@ for player in theLeague {
 //}
 //
 //print("\(experiencedPlayers)")
-// This works, but is kludgy. I guess I don't need to use optional chaining, and can use a simple loop, IF I cast player["experience"] as a Bool for the comparison.
+// This works, but is kludgy. I guess I don't need to use optional chaining, and can use a simple loop, IF I downcast player["experience"] as a Bool for the comparison.
 
 //for player in theLeague {
 //    if let experience = player["experience"] {
@@ -91,4 +126,3 @@ for player in theLeague {
 //
 
 
-//  Afterwards   we   can   go   through   (iterate)   each   group   alternately   and   assign   players   to   the tree   teams
