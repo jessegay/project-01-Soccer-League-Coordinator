@@ -58,28 +58,59 @@ var inexperiencedPlayers: [[String: Any]] = []
 
 
 for player in theLeague {
-    if player["experience"] as! Bool == true {
-        experiencedPlayers += [player]
+    if player["experience"] as? Bool == true {
+        experiencedPlayers.append(player)
     } else {
-        inexperiencedPlayers += [player]
+        inexperiencedPlayers.append(player)
     }
 }
 
 experiencedPlayers.count/3
 //  Afterwards   we   can   go   through   (iterate)   each   group   alternately   and   assign   players   to   the tree   teams
 
-// find total (array.count). create counter. / total by 3. If dragonCount < total/3, assign player to teamDragons. If sharkCount < total * 2/3, assign to teamSharks, if raptorCount < total *2/3 && total, assign to teamRaptors. (might have to do this in reverse order). Wait, maybe easier to do with array indicies.
+// find total (array.count). create counter. / total by 3. If dragonCount < total/3, assign player to teamDragons. If sharkCount < total * 2/3, assign to teamSharks, if raptorCount < total *2/3 && total, assign to teamRaptors. (might have to do this in reverse order). Wait, maybe easier to do with array indicies. https://developer.apple.com/documentation/swift/array
 
-var totalNumberOfPlayers = experiencedPlayers.count
-let firstGroup = experiencedPlayers[0..<totalNumberOfPlayers/3]
-print("\(firstGroup)")
-teamDragons += firstGroup
 
-let secondGroup = experiencedPlayers[totalNumberOfPlayers/3...totalNumberOfPlayers*2/3]
-teamSharks += secondGroup
+//var totalNumberOfPlayers = experiencedPlayers.count
+//let firstGroup = experiencedPlayers[0..<totalNumberOfPlayers/3]
+//print("\(firstGroup)")
+//teamDragons += firstGroup
+//
+//let secondGroup = experiencedPlayers[totalNumberOfPlayers/3...totalNumberOfPlayers*2/3]
+//teamSharks += secondGroup
+//
+//let thirdGroup = experiencedPlayers[totalNumberOfPlayers*2/3...(totalNumberOfPlayers-1)]
+//teamRaptors += thirdGroup
 
-let thirdGroup = experiencedPlayers[totalNumberOfPlayers*2/3...(totalNumberOfPlayers-1)]
-teamRaptors += thirdGroup
+
+// SORT BY AVERAGE HEIGHT.
+    // Compute average height. Function or can I do it with just for in loop?
+func totalExperiencedHeight(height: Double) -> Double {
+    var totalHeight = 0.0
+    totalHeight = height + totalHeight
+    print(totalHeight)
+    return totalHeight
+    
+}
+
+for player in experiencedPlayers {
+var totalHeight = totalExperiencedHeight(height: player["height"] as! Double)
+    print(totalHeight)
+}
+
+
+//for player in experiencedPlayers {
+//    let height = player["height"] as! Double
+//    var totalHeights = 0.0
+//    var totalHeights += 1.0 //(totalHeights + height)
+//    print(height)
+//}
+
+//let averageExperiencedHeight = experiencedPlayers.height experiencedPlayers.count
+//for experienceXHeight in experiencedPlayers {
+//    if experienceXHeight["height"] as! Double >=
+//}
+
 
 //
 //for player in experiencedPlayers {
