@@ -3,5 +3,6 @@
     <pages>
         <page name='project-01'/>
         <page name='brainstorming'/>
+        <page name='Dict Sorting Practice'/>
     </pages>
 </playground>
