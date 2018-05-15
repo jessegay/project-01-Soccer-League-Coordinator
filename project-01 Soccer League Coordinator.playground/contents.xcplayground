@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<playground version='6.0' target-platform='ios'>
+<playground version='6.0' target-platform='ios' executeOnSourceChanges='false'>
     <pages>
         <page name='project-01'/>
         <page name='brainstorming'/>
         <page name='Dict Sorting Practice'/>
+        <page name='Notes'/>
+        <page name='Array Distribution Practice'/>
     </pages>
 </playground>
