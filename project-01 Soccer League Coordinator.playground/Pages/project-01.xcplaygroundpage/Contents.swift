@@ -132,6 +132,51 @@ let numberOfRaptors: Double = Double(teamRaptors.count)
 print("teamRaptors' average height is \(heightTotalRaptors/numberOfRaptors)")
 
 
+
+//    ** Part 3: ** Write code that iterates through all three teams of players and generates a personalized letter to the guardians, letting them know which team the child has been placed on and when they should attend their first team team practice. As long as you provide the necessary information (player name, team name, guardian names, practice date/time), feel free to have fun with the content of the letter. The team practice dates/times are as follows:
+//
+//Dragons - March 17, 1pm
+//Sharks - March 17, 3pm
+//Raptors - March 18, 1pm
+//When your complete code is run in a playground the letters should be stored in a collection named 'letters'. When the code is run, the letters should be visible in the console.
+//
+
+// Create empty array of strings so I have a place to put the letters.
+var letters = [String]()
+
+
+for player in teamSharks {
+    if let guardians = player["guardians"], let name = player["name"] {
+    let myLetter: String = "Hello \(guardians). \(name) has been drafted onto the famous Sharks! The first practice is March 17 at 3pm."
+    letters.append(myLetter)
+    }
+}
+
+
+
+
+
+// There's something wrong with this. It prints Optional in front of each value, which is explicitly forbidden in the ruberic.
+// Or do I have to do it in a single iteration through theLeague? If so, I'll need to add the keys/values "teamName" and "practiceTime" to all the player dicts. Could do this via forIn loops after teams have been created.
+
+// Print Letters (and make sure they are not enclosed in []
+for letter in letters {
+    print(letter)
+}
+//for player in teamSharks {
+//    if let myLetter: String = "\(String(describing: player["name"])) is on teamSharks"{
+//        letters.append(myLetter)
+//    }
+//}
+
+//print(letters)
+
+
+
+
+
+
+
 // EXPERIMENTS:
 
 // This works to get the value of a property of a particular player.
