@@ -1,5 +1,7 @@
 // iOS Techdegree Project 1: Soccer League Coordinator in Swift
 
+//** Part 1: ** We have provided information for the 18 players in the Player Info spreadsheet. Please choose an appropriate data type to store the information for each player. In addition, create an empty collection constant to hold all the players’ data. Once you have decided on what tools to use, manually enter the player data so it can be used in Part 2.
+
 // Create required collections (pleyers, experienced and inexperienced groups, teams, the league.)
 
 let player1: [String: Any] = ["name": "Joe Smith", "height": 42.0, "isExperienced": true, "guardians": "Jim and Jan Smith"]
@@ -51,6 +53,9 @@ var teamRaptors: [[String: Any]] = []
 
 var experiencedPlayers: [[String: Any]] = []
 var inexperiencedPlayers: [[String: Any]] = []
+
+
+//** Part 2: ** Create logic to iterate through all 18 players and assign them to teams such that the number of experienced players on each team are the same. Store each team’s players in its own collection for use in Part 3. Please note: your logic should work correctly regardless of the initial ordering of the players and the number of players. This solution should work if there are 18 players or 100.
 
 
 // Divide   the   players   into   two   groups,   one   for   the   experienced   players,   another   one   for   the inexperienced
@@ -111,7 +116,7 @@ for player in teamDragons {
     heightTotalDragons += (height as? Double)!
 }
 let numberOfDragons: Double = Double(teamDragons.count)
-print("teamDragons' average height is \(heightTotalDragons/numberOfDragons)")
+print("teamDragons' average height is \(heightTotalDragons/numberOfDragons) inches.")
 
 
 var heightTotalSharks = 0.0
@@ -119,8 +124,8 @@ for player in teamSharks {
     let height = player["height"]
     heightTotalSharks += (height as? Double)!
 }
-let numberOfSharks: Double = Double(teamSharks.count) // : Double is syntactic sugar for clarity. Could delete.
-print("teamSharks' average height is \(heightTotalSharks/numberOfSharks)")
+let numberOfSharks: Double = Double(teamSharks.count)
+print("teamSharks' average height is \(heightTotalSharks/numberOfSharks) inches.")
 
 
 var heightTotalRaptors = 0.0
@@ -129,7 +134,7 @@ for player in teamDragons {
     heightTotalRaptors += (height as? Double)!
 }
 let numberOfRaptors: Double = Double(teamRaptors.count)
-print("teamRaptors' average height is \(heightTotalRaptors/numberOfRaptors)")
+print("teamRaptors' average height is \(heightTotalRaptors/numberOfRaptors) inches.")
 
 
 //    ** Part 3: ** Write code that iterates through all three teams of players and generates a personalized letter to the guardians, letting them know which team the child has been placed on and when they should attend their first team team practice. As long as you provide the necessary information (player name, team name, guardian names, practice date/time), feel free to have fun with the content of the letter. The team practice dates/times are as follows:
@@ -138,7 +143,8 @@ print("teamRaptors' average height is \(heightTotalRaptors/numberOfRaptors)")
 //Sharks - March 17, 3pm
 //Raptors - March 18, 1pm
 //When your complete code is run in a playground the letters should be stored in a collection named 'letters'. When the code is run, the letters should be visible in the console.
-//
+
+
 // Create constants for team names and practice times. Not much more efficient than manually writing this info in each letter, but if I wrote more involved letters or wanted to use this template for other teams it could be useful.
 
 let dragonsPracticeTime = "March 17th at 1pm"
