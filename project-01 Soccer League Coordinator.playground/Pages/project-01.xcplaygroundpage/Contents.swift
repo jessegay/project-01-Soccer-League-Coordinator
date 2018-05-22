@@ -58,7 +58,7 @@ var inexperiencedPlayers: [[String: Any]] = []
 //** Part 2: ** Create logic to iterate through all 18 players and assign them to teams such that the number of experienced players on each team are the same. Store each team’s players in its own collection for use in Part 3. Please note: your logic should work correctly regardless of the initial ordering of the players and the number of players. This solution should work if there are 18 players or 100.
 
 
-// Divide   the   players   into   two   groups,   one   for   the   experienced   players,   another   one   for   the inexperienced
+// Divide the players into two groups, one for the experienced   players, another one for the inexperienced players.
 
 for player in theLeague {
     if player["isExperienced"] as? Bool == true {
@@ -68,25 +68,22 @@ for player in theLeague {
     }
 }
 
-// Checking count to see if the split is accurate.
-experiencedPlayers.count
-inexperiencedPlayers.count
 
 // Sort experienced and inexperienced by height before we distribute onto teams. Use Descending order for experiencedPlayers and Ascending for inexperiencedPlayers so when I distribute into teams the heights average out.
 
-let experiencedSortedByHeight = experiencedPlayers.sorted { ($0["height"] as! Double) > ($1["height"] as! Double) }
+let experiencedSortedByHeightDescending = experiencedPlayers.sorted { ($0["height"] as! Double) > ($1["height"] as! Double) }
 
-// Checking results
-//print(experiencedSortedByHeight)
+// Checking results:
+//print(experiencedSortedByHeightDescending)
 
-let inexperiencedSortedByHeight = inexperiencedPlayers.sorted { ($0["height"] as! Double) < ($1["height"] as! Double) }
+let inexperiencedSortedByHeightAscending = inexperiencedPlayers.sorted { ($0["height"] as! Double) < ($1["height"] as! Double) }
 
-// Checking results
-//print(inexperiencedSortedByHeight)
+// Checking results:
+//print(inexperiencedSortedByHeightAscending)
 
-// Now that I've sorted by experience AND height, I need to "deal" (as if from a deck of cards) the players into the 3 teams. If I distribute the experiencedPlayers in descending order and inxperiencedPlayers in ascending order, the average heights should be within 1.5" of each other.
+// Now that I've sorted by experience AND height, I need to "deal" (as if from decks of cards) the players into the 3 teams. Since I've organized experiencedPlayers by descending height and inxperiencedPlayers by ascending height, the average heights should be near each other. This method of using % 3 and checking for == 0 to sort into 3 groups is an extension of the paradigm for sorting odd and even numbers.
 
-for (index, player) in experiencedSortedByHeight.enumerated() {
+for (index, player) in experiencedSortedByHeightDescending.enumerated() {
     if ((index + 1) % 3) == 0 {
         teamDragons.append(player)
     } else if ((index + 2) % 3) == 0{
@@ -97,7 +94,7 @@ for (index, player) in experiencedSortedByHeight.enumerated() {
 }
 
 
-for (index, player) in inexperiencedSortedByHeight.enumerated() {
+for (index, player) in inexperiencedSortedByHeightAscending.enumerated() {
     if ((index + 1) % 3) == 0 {
         teamDragons.append(player)
     } else if ((index + 2) % 3) == 0{
@@ -185,7 +182,7 @@ for player in teamRaptors {
 }
 
 
-// Print Letters (and make sure they are not enclosed in []
+// Print Letters (and make sure they are not enclosed in [])
 for letter in letters {
     print(letter)
 }
