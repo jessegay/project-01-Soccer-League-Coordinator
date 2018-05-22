@@ -1,40 +1,40 @@
 // Create required collections (pleyers, experienced and inexperienced groups, teams, the league.)
 
-let player1: [String: Any] = ["name": "Joe Smith", "height": 42.0, "isExperienced": true, "guardians": "Jim and Jan Smith"]
+var player1: [String: Any] = ["name": "Joe Smith", "height": 42.0, "isExperienced": true, "guardians": "Jim and Jan Smith"]
 
-let player2: [String: Any] = ["name": "Jill Tanner", "height": 36.0, "isExperienced": true, "guardians": "Clara Tanner"]
+var player2: [String: Any] = ["name": "Jill Tanner", "height": 36.0, "isExperienced": true, "guardians": "Clara Tanner"]
 
-let player3: [String: Any] = ["name": "Bill Bon", "height": 43.0, "isExperienced": true, "guardians": "Sara and Jenny Bon"]
+var player3: [String: Any] = ["name": "Bill Bon", "height": 43.0, "isExperienced": true, "guardians": "Sara and Jenny Bon"]
 
-let player4: [String: Any] = ["name": "Eva Gordon", "height": 45.0, "isExperienced": false, "guardians": "Wendy and Mike Gordon"]
+var player4: [String: Any] = ["name": "Eva Gordon", "height": 45.0, "isExperienced": false, "guardians": "Wendy and Mike Gordon"]
 
-let player5: [String: Any] = ["name": "Matt Gill", "height": 40.0, "isExperienced": false, "guardians": "Charles and Sylvia Gill"]
+var player5: [String: Any] = ["name": "Matt Gill", "height": 40.0, "isExperienced": false, "guardians": "Charles and Sylvia Gill"]
 
-let player6: [String: Any] = ["name": "Kimmy Stein", "height": 41.0, "isExperienced": false, "guardians": "Bill and Hillary Stein"]
+var player6: [String: Any] = ["name": "Kimmy Stein", "height": 41.0, "isExperienced": false, "guardians": "Bill and Hillary Stein"]
 
-let player7: [String: Any] = ["name": "Sammy Adams", "height": 45.0, "isExperienced": false, "guardians": "Jeff Adams"]
+var player7: [String: Any] = ["name": "Sammy Adams", "height": 45.0, "isExperienced": false, "guardians": "Jeff Adams"]
 
-let player8: [String: Any] = ["name": "Karl Saygan", "height": 42.0, "isExperienced": true, "guardians": "Heather Bledsoe"]
+var player8: [String: Any] = ["name": "Karl Saygan", "height": 42.0, "isExperienced": true, "guardians": "Heather Bledsoe"]
 
-let player9: [String: Any] = ["name": "Suzane Greenberg", "height": 44.0, "isExperienced": true, "guardians": "Henrietta Dumas"]
+var player9: [String: Any] = ["name": "Suzane Greenberg", "height": 44.0, "isExperienced": true, "guardians": "Henrietta Dumas"]
 
-let player10: [String: Any] = ["name": "Sal Dali", "height": 41.0, "isExperienced": false, "guardians": "Gala Dali"]
+var player10: [String: Any] = ["name": "Sal Dali", "height": 41.0, "isExperienced": false, "guardians": "Gala Dali"]
 
-let player11: [String: Any] = ["name": "Joe Kavalier", "height": 39.0, "isExperienced": false, "guardians": "Sam and Elaine Kavalier"]
+var player11: [String: Any] = ["name": "Joe Kavalier", "height": 39.0, "isExperienced": false, "guardians": "Sam and Elaine Kavalier"]
 
-let player12: [String: Any] = ["name": "Ben Finkelstein", "height": 44.0, "isExperienced": false, "guardians": "Aaron and Jill Finkelstein"]
+var player12: [String: Any] = ["name": "Ben Finkelstein", "height": 44.0, "isExperienced": false, "guardians": "Aaron and Jill Finkelstein"]
 
-let player13: [String: Any] = ["name": "Diego Soto", "height": 41.0, "isExperienced": true, "guardians": "Robin and Sarika Soto"]
+var player13: [String: Any] = ["name": "Diego Soto", "height": 41.0, "isExperienced": true, "guardians": "Robin and Sarika Soto"]
 
-let player14: [String: Any] = ["name": "Chloe Alaska", "height": 47.0, "isExperienced": false, "guardians": "David and Jamie Alaska"]
+var player14: [String: Any] = ["name": "Chloe Alaska", "height": 47.0, "isExperienced": false, "guardians": "David and Jamie Alaska"]
 
-let player15: [String: Any] = ["name": "Arnold Willis", "height": 43.0, "isExperienced": false, "guardians": "Claire Willis"]
+var player15: [String: Any] = ["name": "Arnold Willis", "height": 43.0, "isExperienced": false, "guardians": "Claire Willis"]
 
-let player16: [String: Any] = ["name": "Phillip Helm", "height": 44.0, "isExperienced": true, "guardians": "Thomas Helm and Eva Jones"]
+var player16: [String: Any] = ["name": "Phillip Helm", "height": 44.0, "isExperienced": true, "guardians": "Thomas Helm and Eva Jones"]
 
-let player17: [String: Any] = ["name": "Les Clay", "height": 42.0, "isExperienced": true, "guardians": "Wynonna Brown"]
+var player17: [String: Any] = ["name": "Les Clay", "height": 42.0, "isExperienced": true, "guardians": "Wynonna Brown"]
 
-let player18: [String: Any] = ["name": "Herschel Krustofski", "height": 45.0, "isExperienced": true, "guardians": "Hyman and Rachel Krustofski"]
+var player18: [String: Any] = ["name": "Herschel Krustofski", "height": 45.0, "isExperienced": true, "guardians": "Hyman and Rachel Krustofski"]
 
 
 
@@ -141,38 +141,26 @@ print("teamRaptors' average height is \(heightTotalRaptors/numberOfRaptors)")
 //When your complete code is run in a playground the letters should be stored in a collection named 'letters'. When the code is run, the letters should be visible in the console.
 //
 
+
+
 // Create empty array of strings so I have a place to put the letters.
-var letters = [String]()
-
-
-for player in teamSharks {
-    if let guardians = player["guardians"], let name = player["name"] {
-    let myLetter: String = "Hello \(guardians). \(name) has been drafted onto the famous Sharks! The first practice is March 17 at 3pm."
-    letters.append(myLetter)
-    }
-}
-
-
-
-
-
-// There's something wrong with this. It prints Optional in front of each value, which is explicitly forbidden in the ruberic.
-// Or do I have to do it in a single iteration through theLeague? If so, I'll need to add the keys/values "teamName" and "practiceTime" to all the player dicts. Could do this via forIn loops after teams have been created.
-
-// Print Letters (and make sure they are not enclosed in []
-for letter in letters {
-    print(letter)
-}
+//var letters = [String]()
+//
+//
 //for player in teamSharks {
-//    if let myLetter: String = "\(String(describing: player["name"])) is on teamSharks"{
-//        letters.append(myLetter)
+//    if let guardians = player["guardians"], let name = player["name"] {
+//    let myLetter: String = "Hello \(guardians). \(name) has been drafted onto the famous Sharks! The first practice is March 17 at 3pm."
+//    letters.append(myLetter)
 //    }
 //}
-
-//print(letters)
-
+//
 
 
+
+// Print Letters (and make sure they are not enclosed in []
+//for letter in letters {
+//    print(letter)
+//}
 
 
 
