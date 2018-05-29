@@ -69,7 +69,7 @@ for player in theLeague {
 }
 
 
-// Sort experienced and inexperienced by height before we distribute onto teams. Use Descending order for experiencedPlayers and Ascending for inexperiencedPlayers so when I distribute into teams the heights average out.
+// Sort experienced and inexperienced by height before we distribute onto teams. Use Descending order for experiencedPlayers and Ascending for inexperiencedPlayers so when I distribute into teams, in order, the heights average out.
 
 let experiencedSortedByHeightDescending = experiencedPlayers.sorted { ($0["height"] as! Double) > ($1["height"] as! Double) }
 
@@ -84,15 +84,11 @@ let inexperiencedSortedByHeightAscending = inexperiencedPlayers.sorted { ($0["he
 //print("These are the inexperienced players \(inexperiencedSortedByHeightAscending). There are \(inexperiencedSortedByHeightAscending.count) of them.")
 //print("")
 
-// Now that I've sorted by experience AND height, I need to "deal" (as if from a deck of cards) the players into the 3 teams. If I distribute the experiencedPlayers in descending order and inxperiencedPlayers in ascending order, the average heights should be within 1.5" of each other.
-
-let allTeams = [teamDragons, teamSharks, teamRaptors]
-
-
-// Create master array that has experienced players in descending height and inexperienced in ascending height. When these are distributed, in order, to the 3 teams, the heights will balance out. This works, but feels kludgy.
-
+// Now that I've sorted by experience AND height, I need to "deal" (as if from a deck of cards) the players into the 3 teams. If I distribute the experiencedPlayers in descending order and inxperiencedPlayers in ascending order, the average heights should be within 1.5" of each other. In order to do this in a single step, I'll create a master array that has experienced players in descending height and inexperienced in ascending height. When these are distributed, in order, to the 3 teams, the heights will balance out.
 
 let descendingAscendingPlayersArray = experiencedSortedByHeightDescending + inexperiencedSortedByHeightAscending
+
+let allTeams = [teamDragons, teamSharks, teamRaptors]
 
 var averagePlayersPerTeam = descendingAscendingPlayersArray.count/allTeams.count
 
@@ -105,31 +101,6 @@ for player in descendingAscendingPlayersArray {
         teamRaptors.append(player)
     }
 }
-
-
-
-
-//// Can't use due to hard-coded number. Delete before submission.
-//for (index, player) in experiencedSortedByHeightDescending.enumerated() {
-//    if ((index + 1) % 3) == 0 {
-//        teamDragons.append(player)
-//    } else if ((index + 2) % 3) == 0{
-//        teamSharks.append(player)
-//    } else {
-//        teamRaptors.append(player)
-//    }
-//}
-//
-//
-//for (index, player) in inexperiencedSortedByHeightAscending.enumerated() {
-//    if ((index + 1) % 3) == 0 {
-//        teamDragons.append(player)
-//    } else if ((index + 2) % 3) == 0{
-//        teamSharks.append(player)
-//    } else {
-//        teamRaptors.append(player)
-//    }
-//}
 
 
 // Calculate average height and print to console. For each team add the heights of all players and divide by teamName.count. Need to make count a Double since Swift won't let me divide Double by Int (due to type safety.)
