@@ -74,19 +74,32 @@ for player in theLeague {
 let experiencedSortedByHeightDescending = experiencedPlayers.sorted { ($0["height"] as! Double) > ($1["height"] as! Double) }
 
 // Checking results:
-//print(experiencedSortedByHeightDescending)
+//print("These are the experienced players \(experiencedSortedByHeightDescending). There are \(experiencedSortedByHeightDescending.count) of them.")
+//print("")
+
 
 let inexperiencedSortedByHeightAscending = inexperiencedPlayers.sorted { ($0["height"] as! Double) < ($1["height"] as! Double) }
 
 // Checking results:
-//print(inexperiencedSortedByHeightAscending)
+//print("These are the inexperienced players \(inexperiencedSortedByHeightAscending). There are \(inexperiencedSortedByHeightAscending.count) of them.")
+//print("")
 
-// Now that I've sorted by experience AND height, I need to "deal" (as if from decks of cards) the players into the 3 teams. Since I've organized experiencedPlayers by descending height and inxperiencedPlayers by ascending height, the average heights should be near each other. This method of using % 3 and checking for == 0 to sort into 3 groups is an extension of the paradigm for sorting odd and even numbers.
+// Now that I've sorted by experience AND height, I need to "deal" (as if from a deck of cards) the players into the 3 teams. If I distribute the experiencedPlayers in descending order and inxperiencedPlayers in ascending order, the average heights should be within 1.5" of each other.
 
-for (index, player) in experiencedSortedByHeightDescending.enumerated() {
-    if ((index + 1) % 3) == 0 {
+let allTeams = [teamDragons, teamSharks, teamRaptors]
+
+
+// Create master array that has experienced players in descending height and inexperienced in ascending height. When these are distributed, in order, to the 3 teams, the heights will balance out. This works, but feels kludgy.
+
+
+let descendingAscendingPlayersArray = experiencedSortedByHeightDescending + inexperiencedSortedByHeightAscending
+
+var averagePlayersPerTeam = descendingAscendingPlayersArray.count/allTeams.count
+
+for player in descendingAscendingPlayersArray {
+    if teamDragons.count < averagePlayersPerTeam && teamDragons.count < (teamSharks.count + 1) {
         teamDragons.append(player)
-    } else if ((index + 2) % 3) == 0{
+    } else if teamSharks.count < teamDragons.count {
         teamSharks.append(player)
     } else {
         teamRaptors.append(player)
@@ -94,23 +107,39 @@ for (index, player) in experiencedSortedByHeightDescending.enumerated() {
 }
 
 
-for (index, player) in inexperiencedSortedByHeightAscending.enumerated() {
-    if ((index + 1) % 3) == 0 {
-        teamDragons.append(player)
-    } else if ((index + 2) % 3) == 0{
-        teamSharks.append(player)
-    } else {
-        teamRaptors.append(player)
-    }
-}
+
+
+//// Can't use due to hard-coded number. Delete before submission.
+//for (index, player) in experiencedSortedByHeightDescending.enumerated() {
+//    if ((index + 1) % 3) == 0 {
+//        teamDragons.append(player)
+//    } else if ((index + 2) % 3) == 0{
+//        teamSharks.append(player)
+//    } else {
+//        teamRaptors.append(player)
+//    }
+//}
+//
+//
+//for (index, player) in inexperiencedSortedByHeightAscending.enumerated() {
+//    if ((index + 1) % 3) == 0 {
+//        teamDragons.append(player)
+//    } else if ((index + 2) % 3) == 0{
+//        teamSharks.append(player)
+//    } else {
+//        teamRaptors.append(player)
+//    }
+//}
 
 
 // Calculate average height and print to console. For each team add the heights of all players and divide by teamName.count. Need to make count a Double since Swift won't let me divide Double by Int (due to type safety.)
 
+
 var heightTotalDragons = 0.0
 for player in teamDragons {
-    let height = player["height"]
-    heightTotalDragons += (height as? Double)!
+    if let height = player["height"] as? Double{
+    heightTotalDragons += height
+    }
 }
 let numberOfDragons: Double = Double(teamDragons.count)
 print("teamDragons' average height is \(heightTotalDragons/numberOfDragons) inches.")
@@ -118,8 +147,9 @@ print("teamDragons' average height is \(heightTotalDragons/numberOfDragons) inch
 
 var heightTotalSharks = 0.0
 for player in teamSharks {
-    let height = player["height"]
-    heightTotalSharks += (height as? Double)!
+    if let height = player["height"] as? Double {
+    heightTotalSharks += height
+    }
 }
 let numberOfSharks: Double = Double(teamSharks.count)
 print("teamSharks' average height is \(heightTotalSharks/numberOfSharks) inches.")
@@ -127,8 +157,9 @@ print("teamSharks' average height is \(heightTotalSharks/numberOfSharks) inches.
 
 var heightTotalRaptors = 0.0
 for player in teamDragons {
-    let height = player["height"]
-    heightTotalRaptors += (height as? Double)!
+    if let height = player["height"] as? Double {
+    heightTotalRaptors += height
+    }
 }
 let numberOfRaptors: Double = Double(teamRaptors.count)
 print("teamRaptors' average height is \(heightTotalRaptors/numberOfRaptors) inches.")
