@@ -85,9 +85,7 @@ let inexperiencedSortedByHeightAscending = inexperiencedPlayers.sorted { ($0["he
 //print("These are the inexperienced players \(inexperiencedSortedByHeightAscending). There are \(inexperiencedSortedByHeightAscending.count) of them.")
 //print("")
 
-// Now that I've sorted by experience AND height, I need to "deal" (as if from a deck of cards) the players into the 3 teams. If I distribute the experiencedPlayers in descending order and inxperiencedPlayers in ascending order, the average heights should be within 1.5" of each other. In order to do this in a single step, I'll create a master array that has experienced players in descending height and inexperienced in ascending height. When these are distributed, in order, to the 3 teams, the heights will balance out. **fix to accommodate doing exp and inexp separately.
-
-
+// Now that I've sorted by experience AND height, I need to "deal" (as if from decks of cards) the players into the 3 teams. If I distribute the experiencedPlayers in descending order and inxperiencedPlayers in ascending order, the average heights should be within 1.5" of each other.
 
 let allTeams = [teamDragons, teamSharks, teamRaptors]
 
@@ -107,9 +105,6 @@ for player in experiencedSortedByHeightDescending {
 }
 
 
-
-// var averageInexperiencedPlayersPerTeam = inexperiencedSortedByHeightAscending.count/allTeams.count
-
 for player in inexperiencedSortedByHeightAscending {
     if teamDragons.count < averagePlayersPerTeam && teamDragons.count < (teamSharks.count + 1) {
         teamDragons.append(player)
@@ -120,35 +115,14 @@ for player in inexperiencedSortedByHeightAscending {
     }
 }
 
-print(teamDragons)
-print("\n")
-print(teamSharks)
-print("\n")
-print(teamRaptors)
-print("\n")
+//Checking results:
+//print(teamDragons)
+//print("\n")
+//print(teamSharks)
+//print("\n")
+//print(teamRaptors)
+//print("\n")
 
-
-
-//      **
-//let descendingAscendingPlayersArray = experiencedSortedByHeightDescending + inexperiencedSortedByHeightAscending
-//
-//let allTeams = [teamDragons, teamSharks, teamRaptors]
-//
-//var averagePlayersPerTeam = descendingAscendingPlayersArray.count/allTeams.count
-//
-//for player in descendingAscendingPlayersArray {
-//    if teamDragons.count < averagePlayersPerTeam && teamDragons.count < (teamSharks.count + 1) {
-//        teamDragons.append(player)
-//    } else if teamSharks.count < teamDragons.count {
-//        teamSharks.append(player)
-//    } else {
-//        teamRaptors.append(player)
-//    }
-//}
-
-//      **
-
-// print(teamDragons)
 
 // Calculate average height and print to console. For each team add the heights of all players and divide by teamName.count. Need to make count a Double since Swift won't let me divide Double by Int (due to type safety.)
 
@@ -189,7 +163,6 @@ print("teamRaptors' average height is \(heightTotalRaptors/numberOfRaptors) inch
 //Sharks - March 17, 3pm
 //Raptors - March 18, 1pm
 //When your complete code is run in a playground the letters should be stored in a collection named 'letters'. When the code is run, the letters should be visible in the console.
-
 
 // Create constants for team names and practice times. Not much more efficient than manually writing this info in each letter, but if I wrote more involved letters or wanted to use this template for other teams it could be useful.
 
