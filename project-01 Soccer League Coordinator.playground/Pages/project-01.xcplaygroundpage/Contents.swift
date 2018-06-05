@@ -73,6 +73,7 @@ for player in theLeague {
 
 let experiencedSortedByHeightDescending = experiencedPlayers.sorted { ($0["height"] as! Double) > ($1["height"] as! Double) }
 
+
 // Checking results:
 //print("These are the experienced players \(experiencedSortedByHeightDescending). There are \(experiencedSortedByHeightDescending.count) of them.")
 //print("")
@@ -84,15 +85,32 @@ let inexperiencedSortedByHeightAscending = inexperiencedPlayers.sorted { ($0["he
 //print("These are the inexperienced players \(inexperiencedSortedByHeightAscending). There are \(inexperiencedSortedByHeightAscending.count) of them.")
 //print("")
 
-// Now that I've sorted by experience AND height, I need to "deal" (as if from a deck of cards) the players into the 3 teams. If I distribute the experiencedPlayers in descending order and inxperiencedPlayers in ascending order, the average heights should be within 1.5" of each other. In order to do this in a single step, I'll create a master array that has experienced players in descending height and inexperienced in ascending height. When these are distributed, in order, to the 3 teams, the heights will balance out.
+// Now that I've sorted by experience AND height, I need to "deal" (as if from a deck of cards) the players into the 3 teams. If I distribute the experiencedPlayers in descending order and inxperiencedPlayers in ascending order, the average heights should be within 1.5" of each other. In order to do this in a single step, I'll create a master array that has experienced players in descending height and inexperienced in ascending height. When these are distributed, in order, to the 3 teams, the heights will balance out. **fix to accommodate doing exp and inexp separately.
 
-let descendingAscendingPlayersArray = experiencedSortedByHeightDescending + inexperiencedSortedByHeightAscending
+
 
 let allTeams = [teamDragons, teamSharks, teamRaptors]
 
-var averagePlayersPerTeam = descendingAscendingPlayersArray.count/allTeams.count
+var averageExperiencedPlayersPerTeam = experiencedSortedByHeightDescending.count/allTeams.count
+var averageInexperiencedPlayersPerTeam = inexperiencedSortedByHeightAscending.count/allTeams.count
+var averagePlayersPerTeam = averageExperiencedPlayersPerTeam + averageInexperiencedPlayersPerTeam
 
-for player in descendingAscendingPlayersArray {
+
+for player in experiencedSortedByHeightDescending {
+    if teamDragons.count < averageExperiencedPlayersPerTeam && teamDragons.count < (teamSharks.count + 1) {
+        teamDragons.append(player)
+    } else if teamSharks.count < teamDragons.count {
+        teamSharks.append(player)
+    } else {
+        teamRaptors.append(player)
+    }
+}
+
+
+
+// var averageInexperiencedPlayersPerTeam = inexperiencedSortedByHeightAscending.count/allTeams.count
+
+for player in inexperiencedSortedByHeightAscending {
     if teamDragons.count < averagePlayersPerTeam && teamDragons.count < (teamSharks.count + 1) {
         teamDragons.append(player)
     } else if teamSharks.count < teamDragons.count {
@@ -102,6 +120,35 @@ for player in descendingAscendingPlayersArray {
     }
 }
 
+print(teamDragons)
+print("\n")
+print(teamSharks)
+print("\n")
+print(teamRaptors)
+print("\n")
+
+
+
+//      **
+//let descendingAscendingPlayersArray = experiencedSortedByHeightDescending + inexperiencedSortedByHeightAscending
+//
+//let allTeams = [teamDragons, teamSharks, teamRaptors]
+//
+//var averagePlayersPerTeam = descendingAscendingPlayersArray.count/allTeams.count
+//
+//for player in descendingAscendingPlayersArray {
+//    if teamDragons.count < averagePlayersPerTeam && teamDragons.count < (teamSharks.count + 1) {
+//        teamDragons.append(player)
+//    } else if teamSharks.count < teamDragons.count {
+//        teamSharks.append(player)
+//    } else {
+//        teamRaptors.append(player)
+//    }
+//}
+
+//      **
+
+// print(teamDragons)
 
 // Calculate average height and print to console. For each team add the heights of all players and divide by teamName.count. Need to make count a Double since Swift won't let me divide Double by Int (due to type safety.)
 
